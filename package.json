@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "prestart": "handlebars views/partials/highscoreBox.handlebars -f public/highscoreBox.js && handlebars views/partials/menu.handlebars -f public/menu.js && handlebars views/partials/pauseModal.handlebars -f public/pauseModal.js",
+    "start": "node server.js",
+    "predev": "handlebars views/partials/highscoreBox.handlebars -f public/highscoreBox.js && handlebars views/partials/menu.handlebars -f public/menu.js && handlebars views/partials/pauseModal.handlebars -f public/pauseModal.js",
+    "dev": "nodemon server.js"
+  },
+  "name": "four-dimensional-maze-site",
+  "version": "1.0.0",
+  "description": "A website that lets users generate and navigate a maze in four dimensions.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-f21/final-project-final-project-team-7.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-f21/final-project-final-project-team-7/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-f21/final-project-final-project-team-7#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.2",
+    "handlebars": "^4.7.7",
+    "scroll-into-view-if-needed": "^2.2.28"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

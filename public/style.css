@@ -1,0 +1,367 @@
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 100px;
+    min-width: 1080px;
+    max-width: 2048px;
+    min-height: 720px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Oxygen, sans-serif;
+    background-color: #023E8A;
+    color: #CAF0F8;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 800px;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+}
+
+#title {
+    margin: 0px;
+    font-size: 70px;
+}
+
+label {
+    margin: 0px 10px;
+    font-size: 23px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.maze-size {
+    margin: 0px 10px;
+    width: 30px;
+}
+
+#player-name {
+    width: 300px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+#start-button {
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 15px 30px;
+    background-color: #03045E;
+    cursor: pointer;
+    text-decoration: none;
+    color: #CAF0F8;
+    font-family: 'Segoe UI', 'Helvetica Neue', Oxygen, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#start-button:hover {
+    background-color: #CAF0F8;
+    color: #03045E;
+}
+
+#start-button:focus {
+    outline: none;
+}
+
+#highscore-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 25px 45px;
+    background-color: #03045E;
+    max-height: 300px;
+}
+
+#hs-title {
+    font-size: 25px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#hs-description {
+    padding: 5px 0px;
+    font-weight: 700;
+}
+
+.highscore {
+    margin: 0px;
+    padding: 10px 0px;
+}
+
+#maze-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 5px;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 720px;
+    background-color: #0077B6;
+}
+
+#slice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    position: relative;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    background-color: #CAF0F8;
+}
+
+.arrow {
+    position: absolute;
+    margin: 0px;
+    width: 15px;
+    height: 15px;
+}
+
+.arrow-hidden {
+    display: none !important;
+}
+
+.top {
+    top: 5px;
+}
+
+.right {
+    right: 5px;
+}
+
+.bottom {
+    bottom: 5px;
+}
+
+.left {
+    left: 5px;
+}
+
+.player-highlight {
+    background-color: tomato;
+}
+
+.adjacent-highlight {
+    background-color: lightcoral;
+}
+
+.goal-highlight {
+    background-color: #ECF87F;
+}
+
+.adjacent-highlight.goal-highlight {
+    background-color: orange !important;
+}
+
+.remove-top-border {
+    border-top: none !important;
+}
+
+.remove-right-border {
+    border-right: none !important;
+}
+
+.remove-bottom-border {
+    border-bottom: none !important;
+}
+
+.remove-left-border {
+    border-left: none !important;
+}
+
+#stack-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 10px;
+    width: 130px;
+    height: 130px;
+}
+
+.stack .tile {
+    position: absolute;
+    width: 37.5px;
+    height: 37.5px;
+}
+
+.stack .tile:hover {
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+}
+
+#pause-backdrop {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #03045E80;
+}
+
+.pause-backdrop-hidden {
+    position: static !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px 5px;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    background-color: #0077B6 !important;
+}
+
+#stopwatch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 10px;
+    width: 236px;
+    height: 50px;
+    background-color: #03045E;
+    font-size: 25px;
+}
+
+#stopwatch-title {
+    margin: 0px 5px 0px 0px;
+    font-size: 25px;
+}
+
+#counter {
+    margin: 0px 0px 0px 5px;
+}
+
+#game-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 10px;
+    width: 236px;
+    height: 50px;
+    background-color: #03045E;
+    font-size: 25px;
+}
+
+.game-button {
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 10px;
+    height: 30px;
+    background-color: #03045E;
+    color: #CAF0F8;
+    text-decoration: none;
+}
+
+.game-button:hover {
+    background-color: #CAF0F8;
+    color: #03045E;
+}
+
+#pause-button {
+    height: 54px;
+    font-size: 25px;
+}
+
+#win-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 10px;
+    height: 50px;
+    background-color: #03045E;
+}
+
+.win-message-hidden {
+    display: none !important;
+}
+
+#win-message {
+    margin: 0px;
+    font-size: 35px;
+}
+
+#instructions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5px;
+    border: 2px solid #0077B6;
+    border-radius: 5px;
+    padding: 10px 30px;
+    min-width: 300px;
+    max-width: 300px;
+    z-index: 100;
+    background-color: #0077B6;
+}
+
+#instructions-title {
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
+#instructions-container p {
+    margin: 0px;
+    line-height: 30px;
+    text-align: justify;
+    text-justify: inter-word;
+}

@@ -1,0 +1,31 @@
+<script src="maze.js" type="module" defer></script>
+
+<section id="maze-container">
+    <div id="slice">
+        {{#each rows}}
+            <div class="row">
+                {{#each tiles}}
+                    <button class="tile" data-coordinate="{{coordinate}}">
+                        <img class="arrow top right arrow-hidden" src="./up-arrow.png"></img>
+                        <img class="arrow bottom right arrow-hidden" src="./diagonal-arrow-bottom-right.png"></img>
+                        <img class="arrow bottom left arrow-hidden"  src="./down-arrow.png"></img>
+                        <img class="arrow top left arrow-hidden"  src="./diagonal-arrow-top-left.png"></img>
+                    </button>
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+    <div id="stack-menu">
+        {{#each stacks}}
+            <div class="stack" data-w="{{w}}">
+                {{#each tiles}}
+                    <button class="tile" style="top: {{offset}}px; left: {{offset}}px;" data-z="{{z}}"></button>
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+</section>
+
+{{> pauseModal}}
+
+{{> instructions}}
