@@ -18,7 +18,7 @@ startButton.addEventListener('click', (event) => {
     stateReq.open('POST', stateURL)
     stateReq.setRequestHeader('Content-Type', 'application/json')
     const stateReqBody = JSON.stringify(stateJSON)
-    stateReq.onreadystatechange = () => {
+    stateReq.onload = () => {
         window.location.href = '/maze'
     }
     stateReq.send(stateReqBody)

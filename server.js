@@ -9,22 +9,26 @@ app.engine('handlebars', engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.json())
+
+/*
+app.all('*', (req, res, next) => {
+    console.log('req.method:', req.method)
+    console.log('req.path:', req.path)
+    next()
+})
+*/
+
 app.use(express.static('public'));
 
 app.get('/', (req, res, next) => {
-    let highscores = require('./highscores.json')
+    let highscores = JSON.parse(fs.readFileSync('./highscores.json'))
     res.status(200).render('menuPage', {
         highscores: highscores
     })
 })
 
-app.get('/maze', (req, res, next) => {
-    let maze = require('./maze.json')
-    res.status(200).render('mazePage', maze)
-})
-
 app.post('/save', (req, res, next) => {
-    let state = require('./state.json')
+    let state = JSON.parse(fs.readFileSync('./state.json'))
     state.name = req.body.name
     for (let i = 0; i < 4; i++) {
         state.size[i] = parseInt(req.body.size[i])
@@ -69,8 +73,13 @@ app.post('/save', (req, res, next) => {
     res.status(200).send('Game state stored.')
 })
 
+app.get('/maze', (req, res, next) => {
+    let maze = JSON.parse(fs.readFileSync('./maze.json'))
+    res.status(200).render('mazePage', maze)
+})
+
 app.post('/slice', (req, res, next) => {
-    let maze = require('./maze.json')
+    let maze = JSON.parse(fs.readFileSync('./maze.json'))
     maze.slice = [req.body.z, req.body.w]
     fs.writeFile(__dirname + '/maze.json', JSON.stringify(maze, null, 4), (err) => {
         if (!err) {
@@ -82,7 +91,7 @@ app.post('/slice', (req, res, next) => {
 })
 
 app.post('/win', (req, res, next) => {
-    let state = require('./state.json')
+    let state = JSON.parse(fs.readFileSync('./state.json'))
     state.time = req.body.time
     state.seconds = req.body.seconds
 
@@ -94,8 +103,11 @@ app.post('/win', (req, res, next) => {
             }
         }
     )
+})
 
-    let highscores = require('./highscores.json')
+app.post('/update', (req, res, next) => {
+    let state = JSON.parse(fs.readFileSync('./state.json'))
+    let highscores = JSON.parse(fs.readFileSync('./highscores.json'))
     let index = 5
     for (let i = 4; i >= 0; i--) {
         let highscore = 9999
@@ -127,12 +139,11 @@ app.post('/win', (req, res, next) => {
         } else {
             res.status(500).send("Highscores failed to store.")
         }
-    }
-)
+    })
 })
 
 app.get('/maze.json', (req, res, next) => {
-    let maze = require('./maze.json')
+    let maze = JSON.parse(fs.readFileSync('./maze.json'))
     res.status(200).send(maze)
 })
 

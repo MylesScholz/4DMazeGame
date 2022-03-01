@@ -212,6 +212,12 @@ mazeReq.onload = () => {
                 const winReq = new XMLHttpRequest()
                 const winReqURL = '/win'
                 winReq.open('POST', winReqURL)
+                winReq.onload = () => {
+                    const updateReq = new XMLHttpRequest()
+                    const updateReqURL = '/update'
+                    updateReq.open('POST', updateReqURL)
+                    updateReq.send()
+                }
                 winReq.setRequestHeader('Content-Type', 'application/json')
                 const winReqBody = JSON.stringify(winStateJSON)
                 winReq.send(winReqBody)
